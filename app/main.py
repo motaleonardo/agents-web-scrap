@@ -1,14 +1,13 @@
-import os
 from fastapi import FastAPI
 from pydantic import BaseModel
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import SerperDevTool
+from dotenv import load_dotenv, find_dotenv
 
 app = FastAPI()
 
 #Carregar as chaves da API
-os.environ["OPENAI_API_KEY"]
-os.environ["SERPER_API_KEY"]
+_ = load_dotenv(find_dotenv())
 
 #Definir o modelo de entrada
 class JobRequirements(BaseModel):

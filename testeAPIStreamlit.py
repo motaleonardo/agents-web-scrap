@@ -2,7 +2,6 @@
 import streamlit as st
 import requests
 import time
-from sendmail import send_email
 
 def search_jobs(requirements):
     url = 'http://127.0.0.1/research_candidates'
@@ -63,7 +62,6 @@ def main():
 
     if st.session_state.button2_clicked:
         if email_input:
-            send_email(email_input, results['result']['raw'])
             st.markdown("<h3 style='color:green;'>E-mail enviado!</h1>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
