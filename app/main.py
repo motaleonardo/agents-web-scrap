@@ -3,11 +3,19 @@ from pydantic import BaseModel
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import SerperDevTool
 from dotenv import load_dotenv, find_dotenv
+import os
 
 app = FastAPI()
 
 #Carregar as chaves da API
 _ = load_dotenv(find_dotenv())
+openai_api_key = os.getenv("OPENAI_API_KEY")
+serper_api_key = os.getenv("SERPER_API_KEY")
+
+if not openai_api_key:
+    raise ValueError("OPENAI_API_KEY não está definida no ambiente!")
+else:
+    print("OPENAI_API_KEY carregada com sucesso!")
 
 # Definir o modelo de entrada
 class JobRequirements(BaseModel):
@@ -20,7 +28,7 @@ researcher = Agent(
     goal='Encontrar os melhores perfis de dados para trabalhar baseados nos requisitos da vaga',
     verbose=True,
     memory=True,
-    model='gpt-4o-mini',
+    llm='gpt-4o-mini',
     backstory=(
         "Experiencia na area de dados e formação academica em Recursos Humanos e "
         "Especilista em Linkedin, tem dominio das principais taticas de busca de profissionais"

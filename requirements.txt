@@ -1,5 +1,6 @@
 fastapi[standard]
 pydantic
-uvicorn
+uvicorn[standard]
 crewai
 crewai[tools]
+streamlit

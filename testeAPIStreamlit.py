@@ -4,12 +4,12 @@ import requests
 import time
 
 def search_jobs(requirements):
-    url = 'http://localhost/research_candidates'
+    url = 'http://localhost:8000/research_candidates'
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json',
     }
-    
+
     data = {
         'job_requirements': f'{requirements}'
     }
